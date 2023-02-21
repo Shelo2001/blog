@@ -17,4 +17,10 @@ class ArticlesController extends Controller
         $article->increment('views');
         return response($article);
     }
+
+    public function getArticle($id){
+        $article=Articles::where('id',$id)->first();
+        return response($article);
+    }
+
 }

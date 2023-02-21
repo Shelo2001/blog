@@ -265,3 +265,66 @@ a {
         }
     }
 }
+
+.article {
+    position: relative;
+    .article-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        img {
+            max-height: 600px;
+            width: 100%;
+            object-fit: cover;
+        }
+        h3 {
+            background-color: #f8f9fa;
+            padding: 20px;
+            color: black;
+            position: absolute;
+            border-radius: 20px 20px 0px 0px;
+            text-align: center;
+            width: 500px;
+            top: 550px;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .article-content {
+            justify-content: center;
+            display: flex;
+            margin: 0 auto;
+            gap: 5rem;
+            width: 60%;
+            .left {
+                width: 20%;
+                margin-top: 20px;
+                color: #797676;
+            }
+            .right {
+                color: #495057;
+                width: 70%;
+                line-height: 250%;
+            }
+        }
+        .category {
+            padding: 10px;
+            border: 1px solid#495057;
+            color: #495057;
+            width: fit-content;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-left: 37%;
+        }
+        .line {
+            width: 50%;
+            margin-left: 37%;
+            height: 1px;
+            background-color: #6a6c6e;
+        }
+        .user {
+            margin-left: 37%;
+        }
+    }
+}
