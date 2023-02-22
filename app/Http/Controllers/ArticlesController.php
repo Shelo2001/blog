@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ArticlesController extends Controller
 {
     public function getArticles(){
-        $articles=Articles::paginate(8);
+        $articles=Articles::orderBy('views','desc')->paginate(8);
         return response($articles);
     }
 

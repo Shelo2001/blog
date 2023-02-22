@@ -7,11 +7,29 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Spinner from "../components/Spinner";
 import heroimg from "../assets/homehero.png";
 import { AiOutlineEye } from "react-icons/ai";
+import { motion, useScroll } from "framer-motion";
+import scrollup from "../assets/scrollup.png";
 
 const Home = () => {
     const [categories, setCategories] = useState();
     const [articles, setArticles] = useState();
     const [loading, setLoading] = useState(false);
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        const handleScrollButtonVisibility = () => {
+            window.scrollY > 300 ? setShowButton(true) : setShowButton(false);
+        };
+        window.addEventListener("scroll", handleScrollButtonVisibility);
+        return () => {
+            window.removeEventListener("scroll", handleScrollButtonVisibility);
+        };
+    }, []);
+
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    const { scrollYProgress } = useScroll();
 
     useEffect(() => {
         const getCategories = async () => {
@@ -36,10 +54,25 @@ const Home = () => {
 
     return (
         <div>
+            <motion.div
+                className="progress-bar"
+                style={{ scaleX: scrollYProgress }}
+            />
+            {showButton && (
+                <div onClick={handleScrollToTop}>
+                    <button>
+                        <img
+                            className="scrollup"
+                            src={scrollup}
+                            alt="scrollToTop"
+                        />
+                    </button>
+                </div>
+            )}
             <Navbar />
             <div className="home">
+                <h2>Popular Topics</h2>
                 <div className="topics">
-                    <h2>Popular Topics</h2>
                     {loading ? (
                         <Skeleton style={{ width: "40%" }} />
                     ) : (
@@ -51,6 +84,9 @@ const Home = () => {
                             ))}
                         </div>
                     )}
+                    <div className="view-all">
+                        <Link to={`/articles/all`}>View All</Link>
+                    </div>
                 </div>
                 <div className="articles">
                     {loading ? (

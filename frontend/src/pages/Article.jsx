@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import { BiArrowBack } from "react-icons/bi";
 
 const Article = () => {
     const { id } = useParams();
@@ -27,6 +28,14 @@ const Article = () => {
                 <Spinner />
             ) : (
                 <div className="article-container">
+                    <Link to={`/`}>
+                        <button className="back-button">
+                            <BiArrowBack
+                                size={20}
+                                style={{ strokeWidth: "1" }}
+                            />
+                        </button>
+                    </Link>
                     <img src={article?.image} />
                     <h3>{article?.title}</h3>
                     <div className="article-content">
