@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { BiArrowBack } from "react-icons/bi";
+import { AiOutlineEye } from "react-icons/ai";
 
 const Article = () => {
     const { id } = useParams();
@@ -58,11 +59,15 @@ const Article = () => {
                         </div>
                     </div>
 
-                    <p className="category">
+                    <div className="views-category">
                         <Link to={`/articles/${article?.category}`}>
-                            {article?.category}
+                            <p className="category">{article?.category}</p>
                         </Link>
-                    </p>
+                        <p>
+                            <AiOutlineEye /> {article?.views}
+                        </p>
+                    </div>
+
                     <hr className="line" />
                     <div className="user">
                         <Link to={`/user/${article?.user_id}`}>

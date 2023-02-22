@@ -340,14 +340,20 @@ a {
                 line-height: 250%;
             }
         }
-        .category {
-            padding: 10px;
-            border: 1px solid#495057;
-            color: #495057;
-            width: fit-content;
-            font-weight: 600;
-            border-radius: 10px;
+        .views-category {
+            display: flex;
+            justify-content: space-between;
             margin-left: 37%;
+            width: 50%;
+            align-items: center;
+            .category {
+                padding: 10px;
+                border: 1px solid#495057;
+                color: #495057;
+                width: fit-content;
+                font-weight: 600;
+                border-radius: 10px;
+            }
         }
         .line {
             width: 50%;
