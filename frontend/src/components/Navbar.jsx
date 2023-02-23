@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
 import { AiOutlineTwitter, AiOutlineUser } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
 import { BsYoutube } from "react-icons/bs";
+import axios from "axios";
 
 const Navbar = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const logoutHandler = () => {
+        const logoutUser = async () => {
+            const token = JSON.parse(localStorage.getItem("token"));
+
+            await axios.get(`${import.meta.env.VITE_BASE_URL}/api/logout`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href = "/signin";
+        };
+
+        logoutUser();
+    };
+
     return (
         <div className="navbar-container">
             <div className="img"></div>
@@ -43,9 +66,23 @@ const Navbar = () => {
                     </div>
                     <div className="line" />
                     <div className="user">
-                        <Link to="/signin">
-                            <AiOutlineUser />
-                        </Link>
+                        {user ? (
+                            <div>
+                                <Link to="/profile">{user?.name}</Link>
+                                <button
+                                    className="logout"
+                                    onClick={logoutHandler}
+                                >
+                                    <p>
+                                        <FiLogOut /> Logout
+                                    </p>
+                                </button>
+                            </div>
+                        ) : (
+                            <Link to="/signin">
+                                <AiOutlineUser />
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>

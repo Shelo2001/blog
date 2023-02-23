@@ -8,6 +8,7 @@ import { AiOutlineEye } from "react-icons/ai";
 const Article = () => {
     const { id } = useParams();
     const [article, setArticle] = useState();
+    const [author, setAuthor] = useState();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -16,7 +17,9 @@ const Article = () => {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_BASE_URL}/api/articles/${id}`
             );
-            setArticle(data);
+            console.log(data);
+            setArticle(data.article);
+            setAuthor(data.author);
             setLoading(false);
         };
 
@@ -26,7 +29,16 @@ const Article = () => {
     return (
         <div className="article">
             {loading ? (
-                <Spinner />
+                <div
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%,-50%)",
+                    }}
+                >
+                    <Spinner />
+                </div>
             ) : (
                 <div className="article-container">
                     <Link to={`/`}>
@@ -69,11 +81,7 @@ const Article = () => {
                     </div>
 
                     <hr className="line" />
-                    <div className="user">
-                        <Link to={`/user/${article?.user_id}`}>
-                            {article?.user_id}
-                        </Link>
-                    </div>
+                    <div className="user">Author: {author?.name}</div>
                 </div>
             )}
         </div>
