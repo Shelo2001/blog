@@ -149,16 +149,6 @@ a {
                     height: 300px;
                     border-radius: 10px 10px 0px 0px;
                 }
-                h4:after {
-                    display: block;
-                    content: "";
-                    border-bottom: solid 2px #d4a373;
-                    transform: scaleX(0);
-                    transition: transform 250ms ease-in-out;
-                }
-                h4:hover:after {
-                    transform: scaleX(1);
-                }
                 .category {
                     position: absolute;
                     top: 0;

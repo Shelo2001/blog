@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
-import { AiOutlineTwitter, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineLinkedin, AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { BsYoutube } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
 import axios from "axios";
 
 const Navbar = () => {
@@ -58,10 +58,10 @@ const Navbar = () => {
                             <BsFacebook className="facebook" />
                         </a>
                         <a href="">
-                            <AiOutlineTwitter className="twitter" />
+                            <AiOutlineLinkedin className="twitter" />
                         </a>
                         <a href="">
-                            <BsYoutube className="youtube" />
+                            <BsGithub className="youtube" />
                         </a>
                     </div>
                     <div className="line" />
