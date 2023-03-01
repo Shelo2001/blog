@@ -3,6 +3,7 @@ import { AiOutlinePhone, AiOutlineTwitter } from "react-icons/ai";
 import { BsFacebook, BsYoutube } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import { HiOutlineMail } from "react-icons/hi";
+import Subscribe from "./Subscribe";
 
 const Footer = () => {
     return (

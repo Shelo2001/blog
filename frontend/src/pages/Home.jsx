@@ -9,6 +9,7 @@ import heroimg from "../assets/homehero.png";
 import { AiOutlineEye } from "react-icons/ai";
 import { motion, useScroll } from "framer-motion";
 import scrollup from "../assets/scrollup.png";
+import Subscribe from "../components/Subscribe";
 
 const Home = () => {
     const [categories, setCategories] = useState();
@@ -169,6 +170,7 @@ const Home = () => {
                         </Link>
                     ))}
                 </div>
+                <Subscribe />
             </div>
         </div>
     );
